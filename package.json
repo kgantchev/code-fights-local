@@ -1,0 +1,58 @@
+{
+  "name": "code-fights-local",
+  "version": "1.0.0",
+  "description": "A simple command-line tool for creating a local instance of any CodeFights task.",
+  "main": "src/code-fights-local.js",
+  "private": true,
+  "keywords": [
+    "code-fights-local",
+    "code fights local",
+    "CodeFights",
+    "codefights",
+    "code-fights",
+    "code",
+    "fights",
+    "command",
+    "cli"
+  ],
+  "author": "Kiril Gantchev",
+  "license": "MIT",
+  "dependencies": {
+    "lambda-local": "1.4.2",
+    "nightmare": "2.10.0",
+    "shelljs": "0.7.7",
+    "to-markdown": "https://registry.npmjs.org/to-markdown/-/to-markdown-3.0.4.tgz"
+  },
+  "devDependencies": {
+    "@types/node": "7.0.4",
+    "mocha": "3.3.0",
+    "npm-run-all": "4.0.0",
+    "ts-node": "2.1.0",
+    "tslint": "4.5.1",
+    "tslint-eslint-rules": "3.4.0",
+    "typescript": "2.1.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "run-s build && mocha test --recursive",
+    "main": "run-s build && node src/main.js",
+    "lint": "tslint -e \"**/node_modules/**\" -e \"**/*.d.ts\" \"**/*.ts\" \"**/*.tsx\"",
+    "shrink": "rm -rf node_modules && npm i --no-shrinkwrap && npm shrink --also=dev"
+  },
+  "bin": {
+    "code-fights-local": "./bin/code-fights-local.js"
+  },
+  "directories": {
+    "bin": "Executable",
+    "src": "Source code",
+    "test": "Test code"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgantchev/code-fights-local.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kgantchev/code-fights-local/issues"
+  },
+  "homepage": "https://github.com/kgantchev/code-fights-local#readme"
+}

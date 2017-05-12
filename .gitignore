@@ -4,7 +4,8 @@
 *.log*
 
 # js files
-*.js*
+*.js
+*.js.map
 
 # dependencies
 /node_modules
