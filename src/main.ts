@@ -1,3 +1,3 @@
-import { loadTask } from './task-loader';
+import { downloadTask } from './task-loader';
 // https://codefights.com/interview/EDaACHNYHyH6qQFAL
-loadTask('https://codefights.com/interview/wjewD7BPuQDhfa5yx');
+downloadTask('https://codefights.com/interview/wjewD7BPuQDhfa5yx');
