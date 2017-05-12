@@ -1,12 +1,9 @@
 import * as Nightmare from 'nightmare';
-import { codeFightsLogin, loginSelectors, taskSelectors } from './config';
+import { browserOptions, codeFightsLogin, loginSelectors, taskSelectors } from './config';
 import { createFunction, createReadMe } from './task-constructors';
 
 const nightmare = Nightmare({
-    show: true,
-    webPreferences: {
-        partition: 'persist: code-fights-local',
-    },
+    browserOptions,
 });
 
 const loadTests = (url, functionName, numTests) => {

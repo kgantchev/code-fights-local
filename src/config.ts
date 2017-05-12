@@ -3,6 +3,14 @@ export const codeFightsLogin = {
     email: 'codefights@protonmail.com',
     password: 'ySvP89f00*&GCgeoC53Ov$Ph$1KdZD6G',
 };
+
+export const browserOptions = {
+    show: false,
+    webPreferences: {
+        partition: 'persist: code-fights-local',
+    },
+};
+
 export const loginSelectors = {
     loginTab: 'body > div:nth-child(9) > div > div > div:nth-child(3) > div > div.landing--slogan.-home.-layout-v.-' +
     'padding-v-24-xs-gt.-padding-v-16-xs-lte > div > div.block.-inside-1280.-layout-h-s-gt.-layout-v-s-lte.-align-' +
