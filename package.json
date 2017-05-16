@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple command-line tool for creating a local instance of any CodeFights task.",
   "main": "src/code-fights-local.js",
-  "private": true,
+  "private": false,
   "keywords": [
     "code-fights-local",
     "code fights local",
