@@ -2,21 +2,23 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as shell from 'shelljs';
 import * as toMarkdown from 'to-markdown';
+import {Test} from './components/test';
 
 const makePathString = (name) => path.join(__dirname, 'tasks', name);
 
-const createTaskDir = (path) => {
-    if (!fs.existsSync(path)) {
-        console.log('Creating task directory \n\t' + path);
-        shell.mkdir('-p', path);
+const createTaskDir = (dir) => {
+    if (!fs.existsSync(dir)) {
+        console.log('Creating task directory \n\t' + dir);
+        shell.mkdir('-p', dir);
     }
-    return path;
+    return dir;
 };
 
 export const createReadMe = (taskName, markdownHtml) => {
-    const path = createTaskDir(makePathString(taskName));
-    console.log(`Creating task README file \n\t${path.join(path, 'README.md')}`);
-    fs.writeFileSync(path.join(path, 'README.md'), toMarkdown(markdownHtml));
+    const dir = createTaskDir(makePathString(taskName));
+    console.log(`Creating task README file \n\t${path.join(dir, 'README.md')}`);
+    fs.writeFileSync(path.join(dir, 'README.md'), toMarkdown(markdownHtml));
+    return dir;
 };
 
 export const createFunction = (taskName, functionBody) => {
@@ -25,9 +27,12 @@ export const createFunction = (taskName, functionBody) => {
     const dir = createTaskDir(makePathString(taskName));
     console.log(`Creating lambda for task \n\t${path.join(dir, 'index.js')}`);
     fs.writeFileSync(path.join(dir, 'index.js'), template);
+    return dir;
 };
 
-export const createTests = (taskName) => {
+export const createTests = (taskName, test: Test[]) => {
     const dir = createTaskDir(makePathString(taskName));
-    console.log(`Creating test file \n\t${path.join(dir, `${taskName}Test.js`)}`);
+    console.log(`Creating test file \n\t${path.join(dir, 'test', `${taskName}Test.js`)}`);
+    console.log(test);
+    return dir;
 };

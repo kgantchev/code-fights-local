@@ -250,7 +250,7 @@
     },
     "cheerio": {
       "version": "0.22.0",
-      "from": "cheerio@latest",
+      "from": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz",
       "resolved": "https://registry.npmjs.org/cheerio/-/cheerio-0.22.0.tgz"
     },
     "cli-boxes": {

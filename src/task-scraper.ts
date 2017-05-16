@@ -1,72 +1,110 @@
 import * as Nightmare from 'nightmare';
-import { browserOptions, codeFightsLogin, loginSelectors, taskSelectors } from './config';
-import { createFunction, createReadMe } from './task-constructors';
+import { Task } from './components/task';
+import { browserOptions, codeFightsLogin } from './config';
+import { loginSelectors, taskSelectors } from './selectors';
+import { parseTest } from './test-parser';
 
-const nightmare = Nightmare({
-    browserOptions,
-});
+const nightmare = Nightmare(browserOptions);
 
-const loadTests = (url, functionName, numTests) => {
-    console.log(url);
-    console.log(numTests);
-    console.log(functionName);
+const extractTask = (url) => {
+    return nightmare
+        .goto(url)
+        .wait(taskSelectors.markdown)
+        .wait(taskSelectors.functionSignature)
+        .wait(taskSelectors.markdown)
+        .wait(taskSelectors.test.section)
+        .evaluate((ts) => {
+            return new Promise((resolve, reject) => {
+                try {
+                    const result = {
+                        title: document.querySelector(ts.functionName).innerText.trim(),
+                        markdown: document.querySelector(ts.markdown).innerHTML,
+                        taskFunction: {
+                            name: document.querySelector(ts.functionName).innerText.trim(),
+                            body: document.querySelector(ts.functionSignature).innerText.trim() + '\n\n}',
+                        },
+                        tests: [],
+                        numTests: document.querySelectorAll(ts.test.section).length,
+                    };
+                    resolve(result);
+                } catch (exception) {
+                    reject(exception);
+                }
+            });
+        }, taskSelectors)
+        .then((result) => {
+            return result.numTests > 0 ? extractTests(1, new Task(result)) :
+                nightmare.wait(taskSelectors.test.section);
+        }, (error) => {
+            console.error(error);
+        });
+};
+
+const extractTests = (testIndex, task) => {
+    console.log(`Extracting test ${testIndex} out of ${task.numTests}.`);
+    return nightmare
+        .click(taskSelectors.test.getTestHead(testIndex))
+        .wait(taskSelectors.test.bodyLoaded)
+        .evaluate((s) => {
+            return new Promise((resolve, reject) => {
+                try {
+                    resolve(document.querySelector(s.testBody).innerHTML);
+                } catch (exception) {
+                    reject(exception);
+                }
+            });
+        },
+        {
+            testBody: taskSelectors.test.body,
+            index: testIndex,
+        })
+        .then((result) => {
+            const test = parseTest(result);
+            if (test) {
+                task.tests.push(test);
+            } else {
+                console.error('Failed to parse test: ' + test);
+            }
+            if ((testIndex + 1) <= task.numTests) {
+                return extractTests(testIndex + 1, task);
+            } else {
+                task.save();
+                return nightmare.wait(taskSelectors.test.section);
+            }
+        }, (error) => {
+            console.error(error);
+        });
+};
+
+const login = () => {
+    return nightmare
+        .wait(loginSelectors.loginTab)
+        .click(loginSelectors.loginTab)
+        .wait(loginSelectors.emailField)
+        .wait(loginSelectors.passwordField)
+        .wait(loginSelectors.loginButton)
+        .type(loginSelectors.emailField, codeFightsLogin.email)
+        .type(loginSelectors.passwordField, codeFightsLogin.password)
+        .click(loginSelectors.loginButton)
+        .wait(loginSelectors.loginComplete);
 };
 
 export const downloadTask = (url) => {
     console.log('Downloading task: ' + url);
     console.log('Check if logged in.');
     nightmare
+        .viewport(1200, 900)
         .goto('https://codefights.com')
         .wait('body')
         .wait(loginSelectors.loginComplete)
         .wait(1000)
         .exists(loginSelectors.loginComplete)
         .then((loginComplete) => {
-            if (!loginComplete) {
-                console.log('Logging in.');
-                nightmare
-                    .wait(loginSelectors.loginTab)
-                    .click(loginSelectors.loginTab)
-                    .wait(loginSelectors.emailField)
-                    .wait(loginSelectors.passwordField)
-                    .wait(loginSelectors.loginButton)
-                    .type(loginSelectors.emailField, codeFightsLogin.email)
-                    .type(loginSelectors.passwordField, codeFightsLogin.password)
-                    .click(loginSelectors.loginButton)
-                    .wait(loginSelectors.loginComplete);
-            } else {
-                console.log('Logged in and ready to extract tasks.');
-            }
+            return loginComplete ? nightmare.wait(loginSelectors.loginComplete) : login();
         })
         .then(() => {
-            console.log('Extracting task.');
-            nightmare
-                .goto(url)
-                .wait(taskSelectors.markdown)
-                .wait(taskSelectors.functionSignature)
-                .wait(taskSelectors.markdown)
-                .wait(taskSelectors.taskTests)
-                .evaluate((s) => {
-                    return new Promise((resolve, reject) => {
-                        try {
-                            const functionName = document.querySelector(s.functionName).innerText.trim();
-                            const markdown = document.querySelector(s.markdown).innerHTML;
-                            const functionBody = document.querySelector(s.functionSignature).innerText.trim()
-                                + '\n\n}';
-                            const numTests = document.querySelectorAll(s.taskTests).length;
-                            resolve({ functionName, markdown, functionBody, numTests });
-                        } catch (exception) {
-                            reject(exception);
-                        }
-                    });
-                }, taskSelectors)
-                .end()
-                .then((result) => {
-                    createReadMe(result.functionName, result.markdown);
-                    createFunction(result.functionName, result.functionBody);
-                    loadTests(url, result.functionName, result.numTests);
-                }, (error) => {
-                    console.error(error);
-                });
+            return extractTask(url);
         });
+    // .end()
+    // .then((result) => console.log(result), (error) => console.error(error));
 };

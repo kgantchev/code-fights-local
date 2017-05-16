@@ -1,15 +1,3 @@
-export const codeFightsLogin = {
-    userName: 'code-fights-local',
-    email: 'codefights@protonmail.com',
-    password: 'ySvP89f00*&GCgeoC53Ov$Ph$1KdZD6G',
-};
-
-export const browserOptions = {
-    show: false,
-    webPreferences: {
-        partition: 'persist: code-fights-local',
-    },
-};
 
 export const loginSelectors = {
     loginTab: 'body > div:nth-child(9) > div > div > div:nth-child(3) > div > div.landing--slogan.-home.-layout-v.-' +

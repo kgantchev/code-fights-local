@@ -18,10 +18,11 @@
   "author": "Kiril Gantchev",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "0.22.0",
     "lambda-local": "1.4.2",
     "nightmare": "2.10.0",
     "shelljs": "0.7.7",
-    "to-markdown": "https://registry.npmjs.org/to-markdown/-/to-markdown-3.0.4.tgz"
+    "to-markdown": "3.0.4"
   },
   "devDependencies": {
     "@types/node": "7.0.4",
