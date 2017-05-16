@@ -4,7 +4,7 @@ A simple command-line tool for creating a local instance of any CodeFights task.
 
 ## Installing globally
 
-Installation via ```npm``` (NOTE: it's not published yet, so you won't be able to install it):
+Installation via ```npm```:
 
 ```npm install code-fights-local -g```
 
