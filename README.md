@@ -32,10 +32,32 @@ Create a local instance of a CodeFights task by invoking the ```code-fights-loca
 
 ## Example
 
-Invoking ```code-fights-local``` for the first arcade task, which is the ```add``` task.
+Invoking ```code-fights-local``` for the first arcade task, which is the ```wordLadder``` task.
 
-```code-fights-local -s https://codefights.com/arcade/intro/level-1/jwr339Kq6e3LQTsfa```
+```code-fights-local -s https://codefights.com/interview/EDaACHNYHyH6qQFAL```
 
-The task will create a folder named ```./add``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
+The task will create a folder named ```./tasks/wordLadder``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
 
 ## Output Folder Structure
+
+The folder structure for each task looks like this:
+
+```none
+
+/tasks/taskName
+/tasks/taskName/index.js
+/tasks/taskName/README.md
+/tasks/taskName/test/sudoku2Test.js
+
+```
+
+Where ```taskName``` is the name of the task which was downloaded. Back to our ```wordLadder``` example:
+
+```none
+
+/tasks/wordLadder
+/tasks/wordLadder/index.js
+/tasks/wordLadder/README.md
+/tasks/wordLadder/test/sudoku2Test.js
+
+```
