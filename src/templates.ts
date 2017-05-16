@@ -23,8 +23,7 @@ export const templates = {
     },
     "scripts": {
         "build": "tsc",
-        "test": "mocha test --recursive",
-        "lint": "tslint -e \"**/node_modules/**\" -e \"**/*.d.ts\" \"**/*.ts\" \"**/*.tsx\""
+        "test": "mocha test --recursive"
     }
 }`,
     javaScript:

@@ -50,7 +50,7 @@ export const createTests = (taskName, functionDir, tests: Test[]) => {
         t += `{ input: [${test.input.toString()}], expected: ${test.expectedOutput} },`;
     }
     t = t.replace(/,$/, '];');
-    let testTemplate = templates.javaScript.replace('//lambdaPath', `'${path.join(functionDir, 'index.js')}'`);
+    let testTemplate = templates.javaScript.replace('//lambdaPath', `'${path.join(functionDir)}'`);
     testTemplate = testTemplate.replace('//testName', `'${taskName}'`);
     testTemplate = testTemplate.replace('//tests', t);
     fs.writeFileSync(path.join(dir, `${taskName}Test.js`), testTemplate);
