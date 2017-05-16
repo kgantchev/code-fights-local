@@ -5,7 +5,7 @@ export const codeFightsLogin = {
 };
 
 export const browserOptions = {
-    show: false,
+    show: true,
     webPreferences: {
         partition: 'persist: code-fights-local',
     },
