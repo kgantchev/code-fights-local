@@ -45,16 +45,16 @@ The folder structure for each task looks like this:
 ```none
 
 /tasks/package.json
-/tasks/taskName
-/tasks/taskName/index.js
-/tasks/taskName/README.md
-/tasks/taskName/taskNameTest.js
+/tasks/test/taskName
+/tasks/test/taskName/index.js
+/tasks/test/taskName/README.md
+/tasks/test/taskName/taskNameTest.js
 
 ```
 
 Where ```taskName``` is the name of the task which was downloaded. Back to our ```wordLadder``` example:
 
-```index.js`` contains task function. It is the file where you will write your code.
+```index.js``` contains task function. It is the file where you will write your code.
 ```taskNameTest.js``` contains the tests and is the main entry point. It uses [mocha](https://mochajs.org/) to generate the tests. Each test is invoked in a [lambda-local](https://github.com/ashiina/lambda-local) context in order to simulate the test environment of CodeFights.
 
 ```none
