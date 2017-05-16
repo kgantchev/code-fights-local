@@ -1,15 +1,13 @@
 import { Test } from './test';
 
-import { createFunction, createReadMe, createTests } from '../task-constructors';
-
+import { createFunction, createPackageJson, createReadMe, createTests } from '../task-constructors';
 
 export interface TaskFunction {
     name: string;
     body: string;
-    args: string[];
 }
 
-export interface TaskProps {
+interface TaskProps {
     title: string;
     markdown: string;
     taskFunction: TaskFunction;
@@ -34,8 +32,9 @@ export class Task {
     }
 
     save(): void {
-        createFunction(this.title, this.taskFunction.body);
+        createPackageJson();
+        const fnDir = createFunction(this.title, this.taskFunction.body);
         createReadMe(this.title, this.markdown);
-        createTests(this.title, this.tests);
+        createTests(this.title, fnDir, this.tests);
     }
 }
