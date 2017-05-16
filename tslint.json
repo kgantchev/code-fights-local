@@ -1,0 +1,45 @@
+{
+    "extends": "tslint:latest",
+    "rulesDirectory": [
+        "node_modules/tslint-eslint-rules/dist/rules"
+    ],
+    "rules": {
+        "quotemark": [
+            true,
+            "single",
+            "avoid-escape",
+            "jsx-double"
+        ],
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-module",
+            "check-operator",
+            "check-separator",
+            "check-type"
+        ],
+        "no-inferrable-types": true,
+        "no-reference": false,
+        "no-var-requires": false,
+        "object-literal-sort-keys": false,
+        "interface-name": [
+            false
+        ],
+        "no-console": [
+            false
+        ],
+        "member-access": [
+            false
+        ],
+        "no-extra-semi": true,
+        "no-namespace": [
+            true,
+            "allow-declarations"
+        ],
+        "interface-over-type-literal": false,
+        "max-classes-per-file": [
+            false
+        ]
+    }
+}
