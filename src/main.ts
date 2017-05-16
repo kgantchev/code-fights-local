@@ -12,5 +12,8 @@ const testUrls = {
     sudoku2: 'https://codefights.com/interview/2szSXxzqWuAJKProX',
 };
 
-downloadTask(testUrls.sudoku2);
-// downloadTask(url.visiblePoints);
+const main = () => {
+    downloadTask(testUrls.wordLadder);
+};
+
+main();

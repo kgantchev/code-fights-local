@@ -44,20 +44,40 @@ The folder structure for each task looks like this:
 
 ```none
 
+/tasks/package.json
 /tasks/taskName
 /tasks/taskName/index.js
 /tasks/taskName/README.md
-/tasks/taskName/test/sudoku2Test.js
+/tasks/taskName/taskNameTest.js
 
 ```
 
 Where ```taskName``` is the name of the task which was downloaded. Back to our ```wordLadder``` example:
 
+```index.js`` contains task function. It is the file where you will write your code.
+```taskNameTest.js``` contains the tests and is the main entry point. It uses [mocha](https://mochajs.org/) to generate the tests. Each test is invoked in a [lambda-local](https://github.com/ashiina/lambda-local) context in order to simulate the test environment of CodeFights.
+
 ```none
 
-/tasks/wordLadder
-/tasks/wordLadder/index.js
-/tasks/wordLadder/README.md
-/tasks/wordLadder/test/sudoku2Test.js
+/tasks/package.json
+/tasks/test/wordLadder
+/tasks/test/wordLadder/index.js
+/tasks/test/wordLadder/README.md
+/tasks/test/wordLadder/wordLadderTest.js
 
 ```
+
+## Running Locally
+
+Running locally is pretty straightforward from here on. All you have to do is navigate to the ```/tasks``` directory and execute the test script:
+
+```none
+
+cd /tasks
+npm run test
+
+```
+
+## TODO
+
+Please check the project page for more info on pending features and improvements: [https://github.com/kgantchev/code-fights-local/projects/1](https://github.com/kgantchev/code-fights-local/projects/1)

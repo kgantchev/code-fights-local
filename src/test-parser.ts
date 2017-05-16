@@ -22,12 +22,7 @@ export const parseTest = (html) => {
                     .replace(param, '')
                     .split('"').join(`'`)
                     .trim();
-                test.input.push(
-                    {
-                        param,
-                        value,
-                    },
-                );
+                test.input.push(value);
             }
         } else if (title.includes('expected output')) {
             test.expectedOutput = elem.find('pre').text().replace(':', '').trim();
