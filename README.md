@@ -36,7 +36,7 @@ Invoking ```code-fights-local``` for the first arcade task, which is the ```word
 
 ```code-fights-local -s https://codefights.com/interview/EDaACHNYHyH6qQFAL```
 
-The task will create a folder named ```./tasks/wordLadder``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
+The task will create a folder named ```./tasks/test/wordLadder``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
 
 ## Output Folder Structure
 
