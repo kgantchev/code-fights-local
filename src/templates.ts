@@ -32,7 +32,7 @@ const chai_1 = require("chai");
 const lambdaLocal = require("lambda-local");
 const mocha_1 = require("mocha");
 const lambdaPath = //lambdaPath;
-const timeoutMs = 40000;
+const timeoutMs = 4000;
 const tests = //tests;
 const testName = //testName;
 
@@ -65,7 +65,7 @@ import * as lambdaLocal from 'lambda-local';
 import { describe, it } from 'mocha';
 
 const lambdaPath = //lambdaPath;
-const timeoutMs = 40000;
+const timeoutMs = 4000;
 const tests = //tests;
 const testName = //testName;
 
