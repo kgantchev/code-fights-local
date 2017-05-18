@@ -36,7 +36,7 @@ Invoking ```code-fights-local``` for the first arcade task, which is the ```word
 
 ```code-fights-local -s https://codefights.com/interview/EDaACHNYHyH6qQFAL```
 
-The task will create a folder named ```./tasks/wordLadder``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
+The task will create a folder named ```./tasks/test/wordLadder``` in the same directory it was invoked. Note that this example is invoked with the `-s` option, which specifies that the browser should be shown while the application executes (useful if you want to see what it does).
 
 ## Output Folder Structure
 
@@ -69,14 +69,16 @@ Where ```taskName``` is the name of the task which was downloaded. Back to our `
 
 ## Running Locally
 
-Running locally is pretty straightforward from here on. All you have to do is navigate to the ```/tasks``` directory and execute the test script:
+Running the CodeFights task locally is pretty straightforward from here on. All you have to do is navigate to the ```/tasks``` directory and execute the test script:
 
 ```none
 
 cd /tasks
+npm install
 npm run test
 
 ```
+Don't forget to call npm install, so all of the node modules are installed prior to running the test script. 
 
 ## TODO
 
