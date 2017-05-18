@@ -1,6 +1,6 @@
 {
   "name": "code-fights-local",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple command-line tool for creating a local instance of any CodeFights task.",
   "main": "src/code-fights-local.js",
   "private": false,
