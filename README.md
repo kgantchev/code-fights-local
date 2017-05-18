@@ -69,14 +69,16 @@ Where ```taskName``` is the name of the task which was downloaded. Back to our `
 
 ## Running Locally
 
-Running locally is pretty straightforward from here on. All you have to do is navigate to the ```/tasks``` directory and execute the test script:
+Running the CodeFights task locally is pretty straightforward from here on. All you have to do is navigate to the ```/tasks``` directory and execute the test script:
 
 ```none
 
 cd /tasks
+npm install
 npm run test
 
 ```
+Don't forget to call npm install, so all of the node modules are installed prior to running the test script. 
 
 ## TODO
 
