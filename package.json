@@ -20,9 +20,11 @@
   "dependencies": {
     "cheerio": "0.22.0",
     "lambda-local": "1.4.2",
+    "mocha": "3.3.0",
     "nightmare": "2.10.0",
     "shelljs": "0.7.7",
-    "to-markdown": "3.0.4"
+    "to-markdown": "3.0.4",
+    "vinyl": "2.0.2"
   },
   "devDependencies": {
     "@types/node": "7.0.4",
