@@ -26,7 +26,7 @@ export const loginSelectors = {
     'padding-h-24-xxs-gt.-padding-v-0-xxs-lte.-padding-h-8-xxs-lte.-margin-v-0.-margin-h-40.-space-h-48-s-gt > ' +
     'div:nth-child(2) > div > div > div:nth-child(2) > div.-layout-h.-center-center.-padding-16 > div > div',
     loginComplete: 'body > div:nth-child(9) > div > div.page--body.-margin-t-64.-flex > div > div > div > div > ' +
-    'div:nth-child(1) > div.-flex.-animated.-fade-in-up.-delayed-animations-1 > div',
+    'div:nth-child(1)',
 };
 
 export const taskSelectors = {

@@ -10,6 +10,9 @@ const testUrls = {
     sumSubsets: 'https://codefights.com/interview/kEgA4DXcfXuriqGru',
     treeLevelSum: 'https://codefights.com/interview/oqQqEcGhoB2wHswx6',
     sudoku2: 'https://codefights.com/interview/2szSXxzqWuAJKProX',
+    tripletSum: 'https://codefights.com/interview/MZnrYnavhHmYEwZs8',
+    textJustification: 'https://codefights.com/interview/ibANT8ZGc3shACBRF',
+    swapLexOrder: 'https://codefights.com/interview/vG6SManzGDZsoqsh7',
 };
 
 const main = () => {
